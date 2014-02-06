@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/composite/mnu"
+      xmlns:ui="http://java.sun.com/jsf/facelets" >
+    <head>
+        <title>Product Viewer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css"/>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js" ></script>
+        <style>#box1 { margin-left: 25%; margin-top: 55%; width:50%; border-style: solid;}</style>
+    </head>
+    <h:body>    
+        <h:form> 
+            <div data-role="page" id="addProduct">
+                <div data-role="header"><h1>ABC Procurement V2.0</h1></div>
+                <div data-role="content"> 
+                    <div data-role="fieldcontain">
+                        <label for="message">
+                            <h:outputText value="#{productViewModel.msg}"/>
+                        </label>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a" id="ven" style="padding-top: 8px">
+                            <h:selectOneMenu value="#{generatorViewModel.vendorno}" id="vendorno">
+                                <f:selectItems value="#{vendorViewModel.vendorNos}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="ui-block-b" style="padding-top: 8px">
+                            <h:commandButton action="#{generatorViewModel.changeVendor()}" value="Pick Vendor"/>
+                        </div>
+                    </div>
+                    <ui:fragment rendered="#{generatorViewModel.pickedVendor == true}">
+                        <div class="ui-grid-a">
+                                    <div class="ui-block-a" style="padding-top: 8px">
+                                        <h:selectOneMenu id="prodNames" value="#{generatorViewModel.prodN}" >
+                                                <f:selectItems value="#{productViewModel.vendorProducts}"/>
+                                            </h:selectOneMenu>
+                                    </div>
+                        <div class="ui-block-b" style="padding-top: 8px">
+                            <h:commandButton action="#{generatorViewModel.changeProduct()}" value="Pick Product"/>
+                        </div>
+                        </div>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{generatorViewModel.pickedItem == true}">
+                    <div data-role="collapsible" style="padding-top: 8px" data-collapsed="true">
+                        <h3>Product Information</h3>
+                        <div class="ui-grid-a">                            
+                            <div class="ui-block-a">
+                                Product Code:
+                            </div>
+                            <div class="ui-block-b">
+                                <h:outputText id="productco" value="#{productViewModel.prodcd}"/>
+                            </div>
+                            <div class="ui-block-a">
+                                Vendor SKU:
+                            </div>
+                            <div class="ui-block-b">
+                                <h:outputText id="vendorsku" value="#{productViewModel.vendorsku}" />
+                            </div>
+                            <div class="ui-block-a">
+                                Product Name:
+                            </div>
+                            <div class="ui-block-b">
+                                <h:outputText id="prodname" value="#{productViewModel.prodname}" />
+                            </div>
+                        </div>
+                    </div>                       
+              </ui:fragment>
+                    <ui:fragment rendered="#{generatorViewModel.pickedItem == true}">
+                     <div class="ui-grid-a">
+                        <div data-role="collapsible" style="padding-top: 8px" data-collapsed="true">
+                        <h3>Pricing</h3>
+                    <div class="ui-block-a">
+                                Cost Price:
+                            </div>
+                            <div class="ui-block-b">
+                                <h:outputText id="costprice" value="#{productViewModel.costprice}" />
+                            </div>
+                            <div class="ui-block-a">
+                                MSRP:
+                            </div>
+                        <div class="ui-block-b">
+                                <h:outputText id="msrp" value="#{productViewModel.msrp}" />
+                            </div>                     
+                     </div>
+                         </div>
+                    </ui:fragment>
+                     <ui:fragment rendered="#{generatorViewModel.pickedItem == true}">
+                         <div class="ui-grid-a">
+                             <div data-role="collapsible" style="padding-top: 8px" data-collapsed="true">
+                                <h3>QR Code</h3>
+                                <h:graphicImage value="/QRCode?qrc=#{productViewModel.prodcd}"/>
+                             </div>
+                         </div>
+                     </ui:fragment>
+                      <ui:fragment rendered="#{generatorViewModel.pickedItem == true}">
+                          <div class="ui-grid-a">
+                             <div data-role="collapsible" style="padding-top: 8px" data-collapsed="true">
+                                <h3>Inventory</h3>                              
+                            <div class="ui-block-a">
+                                Reorder Point:
+                            </div>
+                            <div class="ui-block-b">
+                                <h:outputText id="reorderpoint" value="#{productViewModel.rop}"/>
+                            </div>
+                            <div class="ui-block-a">
+                                Econ. Order Quantity:
+                            </div>
+                            <div class="ui-block-b">
+                                <h:outputText id="econorder" value="#{productViewModel.eoq}"/>
+                            </div>
+                            <div class="ui-block-a">
+                                Qty on Hand:
+                            </div>
+                            <div class="ui-block-b">
+                                <h:outputText id="onhand" value="#{productViewModel.qoh}"/>
+                            </div>
+                            <div class="ui-block-a">
+                                Qty on Order:
+                            </div>
+                            <div class="ui-block-b">
+                                <h:outputText id="onorder" value="#{productViewModel.qoo}"/>
+                            </div>
+                                </div>
+                             </div>                          
+                                </ui:fragment>                
+                </div>
+                <div data-role="footer" data-position="fixed">
+                    <div data-role="navbar">
+                        <ul>
+                        <li>
+                            <m:MenuItem caption="Add Vendor" jsf="V"></m:MenuItem>
+                            </li>
+                            <li>
+                            <m:MenuItem caption="Add Product" jsf="P"></m:MenuItem>
+                            </li>
+                            <li>
+                            <m:MenuItem caption="Generate PO" jsf="O"></m:MenuItem>
+                            </li>
+                            <li>
+                            <m:MenuItem caption="Product Viewer" jsf="M"></m:MenuItem>
+                            </li>
+                        </ul>
+                    </div>
+                </div>              
+        </div>
+    </h:form>
+    </h:body>
+</html>

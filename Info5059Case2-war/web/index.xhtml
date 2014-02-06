@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/composite/mnu">
+    <h:head>
+        <title>Case Study #2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css"/>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+        <style>#box1 { margin-left: 25%; margin-top: 55%; width:50%; border-style: solid;}</style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div data-role="page" id="home">
+                <div data-role="header"><h1>ABC Procurement V2.0</h1></div>
+                <div data-role="content">
+                    <p>Dummy Index Page</p>
+                </div>
+                <div data-role="footer" data-position="fixed">
+                    <div data-role="navbar">
+                        <ul>
+                        <li>
+                            <m:MenuItem caption="Add Vendor" jsf="V"></m:MenuItem>
+                            </li>
+                            <li>
+                            <m:MenuItem caption="Add Product" jsf="P"></m:MenuItem>
+                            </li>
+                            <li>
+                            <m:MenuItem caption="Generate PO" jsf="O"></m:MenuItem>
+                            </li>
+                            <li>
+                            <m:MenuItem caption="Product Viewer" jsf="M"></m:MenuItem>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>

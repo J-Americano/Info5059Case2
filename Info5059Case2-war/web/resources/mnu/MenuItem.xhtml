@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html [ <!ENTITY nbsp "&#160;"> ]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+    
+    <!--INTERFACE-->
+    <cc:interface>
+        <cc:attribute name="caption" required="true"/>
+        <cc:attribute name="jsf" required="true"/>
+    </cc:interface>
+    
+    <!--IMPLEMENTATION-->
+
+    <head>
+    </head>
+    <body>
+        <cc:implementation>
+            <li><a href="/Info5059Case2-war/C2Control?jsf=#{cc.attrs.jsf}" data-ajax="false">#{cc.attrs.caption}</a></li>
+        </cc:implementation>
+    </body>
+</html>
+

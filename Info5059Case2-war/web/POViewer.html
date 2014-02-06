@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+         POViewer.html 
+         Revisions: none
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/composite/mnu"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>View Vendor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" /> 
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript" src="resources/scripts/getvendor.js"></script>
+    </head>
+    <body>
+        <div data-role="page" id="home">
+            <div data-role="header" style="text-align: center;"><p></p>
+                ABC Procurement v2.0<p></p>
+            </div>
+            <div data-role="content">
+                <h3>Purchase Order Viewer</h3>
+                <div data-role="collapsible-set" id="poset">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>Select PO</h3>
+                        <div class="ui-grid-b">
+                            <div class="ui-block-a">
+                                <div style="padding-top: 15px;">Vendor #</div>
+                            </div>
+                            <div class="ui-block-b">
+                                <select id="vendornos">
+                                </select>
+                            </div>
+                            <div class="ui-block-c">
+                                <button type="submit" id="chooseVendorPO">Select</button>
+                            </div>
+                        </div>
+                        <div class="ui-grid-b" id="POHide">
+                            <div class="ui-block-a">
+                                <div style="padding-top: 15px;">PO #</div>
+                            </div>
+                            <div class="ui-block-b">
+                                <select id="ponos">
+                                </select>
+                            </div>
+                            <div class="ui-block-c">
+                                <button type="submit" id="choosePO">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-role="collapsible" id="CollapsiblePO" data-collapsed="true">
+                         <div class="ui-grid-a">
+                            <!--<div class="ui-block-a">
+                                Products
+                                <div style="padding-top: 15px;">Code</div>
+                            </div>-->
+                            <div class="ui-block-a">
+                                <label id="pocode" ></label>
+                            </div>
+                        </div>
+                </div>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                    <div data-role="navbar">
+                        <ul>
+                        <li>
+                            <m:MenuItem caption="Add Vendor" jsf="V"></m:MenuItem>
+                            </li>
+                            <li>
+                            <m:MenuItem caption="Add Product" jsf="P"></m:MenuItem>
+                            </li>
+                            <li>
+                            <m:MenuItem caption="Generate PO" jsf="O"></m:MenuItem>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                            <m:MenuItem caption="Product Viewer" jsf="M"></m:MenuItem>
+                            </li>
+                        </ul>
+                    </div>
+                </div>              
+        </div>
+    </body>
+</html>
